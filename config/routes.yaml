@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/Invoice/Controller/
+        namespace: Invoice\Controller
+    type: attribute
