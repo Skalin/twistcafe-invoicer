@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>{{ 'Browse Invoices' }}</h1>
+
+        <div>
+            <h2 class="mt-5">{{ 'Invoices' }}</h2>
+
+            <a href="{{ path('invoice_create') }}" class="btn btn-primary">Create new invoice</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for invoice in pager %}
+
+                        <tr>
+                            <th scope="row">{{ invoice.id }}</th>
+
+                            <td><a href="{{ path('invoice_view', {
+                                    customerDetails: customer.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">View</a>
+                                <a
+                                        href="{{ path('invoice_update', {
+                                            customerDetails: customer.id
+                                        }) }}" class="mixed-vinyl-container p-3 text-center">Update</a></td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                {{ pagerfanta(pager) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

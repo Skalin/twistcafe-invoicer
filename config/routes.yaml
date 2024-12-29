@@ -1,5 +1,10 @@
-controllers:
+invoice:
     resource:
         path: ../src/Invoice/Controller/
-        namespace: Invoice\Controller
+        namespace: App\Invoice\Controller
+    type: attribute
+dashboard:
+    resource:
+        path: ../src/Dashboard/Controller/
+        namespace: App\Dashboard\Controller
     type: attribute

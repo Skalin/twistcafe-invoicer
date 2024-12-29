@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>View model ID: {{ model.id }} </h1>
+
+        <div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Param</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <th scope="row">{{ model.id }}</th>
+                    </tr>
+                    <tr>
+
+                        <th scope="row">Name</th>
+                        <td><strong>{{ model.name }} {{ model.surname }}
+                                | {{ model.cinNumber }}</td>
+                    </tr>
+                    <tr>
+
+                        <th scope="row">Email</th>
+                        <td>{{ model.email }}</td>
+                    </tr>
+
+                    <tr>
+
+                        <th scope="row">Phone</th>
+                        <td>{{ model.phone }}</td>
+                    </tr>
+
+                    <tr>
+
+                        <th scope="row">CIN</th>
+                        <td>{{ model.cinNumber }}</td>
+                    </tr>
+
+                    <tr>
+
+                        <th scope="row">VAT ID</th>
+                        <td>{{ model.taxNumber }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

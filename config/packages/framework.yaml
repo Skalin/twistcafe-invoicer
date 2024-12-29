@@ -7,6 +7,9 @@ framework:
 
     #esi: true
     #fragments: true
+    validation:
+        enabled: true
+        mapping: ~
 
 when@test:
     framework:

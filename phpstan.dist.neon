@@ -1,8 +1,13 @@
 parameters:
-    level: 6
+    level: 9
     paths:
-        - bin/
-        - config/
-        - public/
-        - src/
-        - tests/
+        - .
+    bootstrapFiles:
+        - vendor/autoload.php
+    excludePaths:
+        - docker/*
+        - vendor/*
+        - var/*
+        - templates/*
+        - tests/*
+        - composer-setup.php

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>{{ 'Browse customers' }}</h1>
+
+        <div>
+            <h2 class="mt-5">{{ 'Customers' }}</h2>
+
+            <a href="{{ path('customer_details_create') }}" class="btn btn-primary">Create new customer</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">CIN</th>
+                        <th scope="col">VAT ID</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for customer in pager %}
+
+                        <tr>
+                            <th scope="row">{{ customer.id }}</th>
+                            <td><strong>{{ customer.name }} {{ customer.surname }}
+                                    | {{ customer.cinNumber }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.phone }}</td>
+                            <td>{{ customer.cinNumber }}</td>
+                            <td>{{ customer.taxNumber }}</td>
+                            <td>
+                                <a href="{{ path('customer_details_view', {
+                                    customerDetails: customer.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">View</a>
+                                <a href="{{ path('customer_details_update', {
+                                    customerDetails: customer.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">Update</a>
+                                <a href="{{ path('customer_details_delete', {
+                                    customerDetails: customer.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">Delete</a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                {{ pagerfanta(pager) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
