@@ -12,7 +12,11 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">#</th>
+                        <th scope="col">Due At</th>
+                        <th scope="col">Issued At</th>
+                        <th scope="col">Tax. Supply At</th>
+                        <th scope="col">Items Count</th>
+                        <th scope="col">Total</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -20,15 +24,23 @@
                     {% for invoice in pager %}
 
                         <tr>
-                            <th scope="row">{{ invoice.id }}</th>
+                            <th scope="row">{{ invoice.invoiceNumber }}</th>
 
-                            <td><a href="{{ path('invoice_view', {
-                                    customerDetails: customer.id
+                            <td>{{ invoice.dueAt|date('d.m.Y H:i:s') }}</td>
+                            <td>{{ invoice.issuedAt|date('d.m.Y H:i:s') }}</td>
+                            <td>{{ invoice.taxableSupplyAt|date('d.m.Y H:i:s') }}</td>
+
+                            <td>{{ invoice.items.count }}</td>
+                            <td>{{ invoice.totalPrice.price|format_currency(invoice.totalPrice.currency.value) }}</td>
+
+                            <td>
+                                <a href="{{ path('invoice_view', {
+                                    invoice: invoice.id
                                 }) }}" class="mixed-vinyl-container p-3 text-center">View</a>
-                                <a
-                                        href="{{ path('invoice_update', {
-                                            customerDetails: customer.id
-                                        }) }}" class="mixed-vinyl-container p-3 text-center">Update</a></td>
+                                <a href="{{ path('invoice_update', {
+                                    invoice: invoice.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">Update</a>
+                            </td>
                         </tr>
 
                     {% endfor %}

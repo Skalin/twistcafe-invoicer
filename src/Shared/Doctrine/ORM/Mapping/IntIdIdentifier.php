@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping\Id;
 
 trait IntIdIdentifier
 {
-	#[Id]
-	#[GeneratedValue]
-	#[Column(type: 'integer')]
-	private int $id;
+    #[Id]
+    #[GeneratedValue]
+    #[Column(type: 'integer')]
+    private int $id;
 
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

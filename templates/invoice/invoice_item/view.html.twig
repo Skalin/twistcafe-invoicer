@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>View model ID: {{ model.id }} </h1>
+
+        <div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Param</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <th scope="row">{{ model.id }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td><strong>{{ model.name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Amount</th>
+                        <td><strong>{{ model.amount }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Price per Item</th>
+                        <td><strong>{{ model.price|format_currency(model.invoice.currency.value) }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Price</th>
+                        <td><strong>{{ model.totalPrice.price|format_currency(model.invoice.currency.value) }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

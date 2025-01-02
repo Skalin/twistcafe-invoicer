@@ -7,6 +7,52 @@
             <div class="row">
                 {{ form(form) }}
             </div>
+
+            <h2 class="mt-5">{{ 'Items' }}</h2>
+
+            <a href="{{ path('invoice_item_create', {'invoice': model.id}) }}" class="btn btn-primary">Create new
+                item</a>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Price</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in model.items %}
+
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.price|format_currency(item.totalPrice.currency.value) }}</td>
+                            <td>{{ item.amount }}</td>
+                            <td>{{ item.totalPrice.price|format_currency(item.totalPrice.currency.value) }}</td>
+                            <td>
+                                <a href="{{ path('invoice_item_view', {
+                                    invoice: model.id,
+                                    invoiceItem: item.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">View</a>
+                                <a href="{{ path('invoice_item_update', {
+                                    invoice: model.id,
+                                    invoiceItem: item.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">Update</a>
+
+                                <a href="{{ path('invoice_item_delete', {
+                                    invoice: model.id,
+                                    invoiceItem: item.id
+                                }) }}" class="mixed-vinyl-container p-3 text-center">Delete</a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

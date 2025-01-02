@@ -2,18 +2,15 @@
 
 declare(strict_types=1);
 
-
 namespace App\Shared\Request\Query;
 
 use Symfony\Component\HttpFoundation\Request;
 
 readonly class QueryParamsProvider
 {
-
     public function __construct(private Request $request)
     {
     }
-
 
     public function getCurrentPage(?string $entityName = null): int
     {
@@ -30,5 +27,4 @@ readonly class QueryParamsProvider
         $params = array_filter($params, fn($param) => $param !== null);
         return implode('_', $params);
     }
-
 }

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\Shared\Request\Pager;
 
 use App\Shared\Request\Query\QueryParamsProvider;
@@ -20,7 +19,7 @@ readonly class Pager
      *
      * @param QueryBuilder $queryBuilder
      * @param QueryParamsProvider $queryParamsProvider
-     * @return Pagerfanta
+     * @return Pagerfanta<mixed>
      */
     public function getPager(QueryBuilder $queryBuilder, QueryParamsProvider $queryParamsProvider): Pagerfanta
     {
@@ -31,5 +30,4 @@ readonly class Pager
             $queryParamsProvider->getMaxPerPage($this->entityClass)
         );
     }
-
 }

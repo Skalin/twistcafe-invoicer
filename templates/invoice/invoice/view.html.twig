@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <h1>View model ID: {{ model.id }} </h1>
+        <h1>View model ID: {{ model.invoiceNumber }} </h1>
 
         <div>
             <div class="row">
@@ -18,34 +18,66 @@
                         <th scope="row">{{ model.id }}</th>
                     </tr>
                     <tr>
-
-                        <th scope="row">Name</th>
-                        <td><strong>{{ model.name }} {{ model.surname }}
-                                | {{ model.cinNumber }}</td>
+                        <th scope="row">Supplier</th>
+                        <td><strong>{{ model.supplier.name }}</td>
                     </tr>
                     <tr>
-
-                        <th scope="row">Email</th>
-                        <td>{{ model.email }}</td>
+                        <th scope="row">Customer</th>
+                        <td><strong>{{ model.customer.name }}</td>
                     </tr>
-
                     <tr>
-
-                        <th scope="row">Phone</th>
-                        <td>{{ model.phone }}</td>
+                        <th scope="row">Issued At</th>
+                        <td><strong>{{ model.issuedAt|date('d.m.Y H:i:s') }}</td>
                     </tr>
-
                     <tr>
-
-                        <th scope="row">CIN</th>
-                        <td>{{ model.cinNumber }}</td>
+                        <th scope="row">Due At</th>
+                        <td><strong>{{ model.dueAt|date('d.m.Y H:i:s') }}</td>
                     </tr>
-
                     <tr>
-
-                        <th scope="row">VAT ID</th>
-                        <td>{{ model.taxNumber }}</td>
+                        <th scope="row">Taxable Supply At</th>
+                        <td><strong>{{ model.taxableSupplyAt|date('d.m.Y H:i:s') }}</td>
                     </tr>
+                    <tr>
+                        <th scope="row">Payment Method</th>
+                        <td><strong>{{ model.paymentMethod.value }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Currency</th>
+                        <td><strong>{{ model.currency.value }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Price</th>
+                        <td><strong>{{ model.totalPrice }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="mt-5">{{ 'Items' }}</h2>
+
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Price</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in model.items %}
+
+                        <tr>
+                            <th scope="row">{{ item.id }}</th>
+                            <td>{{ item.price|format_currency(item.totalPrice.currency.value) }}</td>
+                            <td>{{ item.amount }}</td>
+                            <td>{{ item.totalPrice.price|format_currency(item.totalPrice.currency.value) }}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
                     </tbody>
                 </table>
             </div>
