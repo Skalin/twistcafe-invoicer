@@ -10,6 +10,8 @@ class UpdateInvoiceDTO extends CreateInvoiceDTO
 {
     private int $id;
 
+    private readonly string $invoiceNumber;
+
     /** @var ArrayCollection<int, UpdateInvoiceItemDTO> */
     private ArrayCollection $items;
 
@@ -41,6 +43,18 @@ class UpdateInvoiceDTO extends CreateInvoiceDTO
         $this->items->add($item);
     }
 
+
+    public function getInvoiceNumber(): string
+    {
+        return $this->invoiceNumber;
+    }
+
+    public function setInvoiceNumber(string $invoiceNumber): void
+    {
+        $this->invoiceNumber = $invoiceNumber;
+    }
+
+
     public function hydrateFromEntity(Invoice $entity): void
     {
         $this->setId($entity->getId());
@@ -51,6 +65,7 @@ class UpdateInvoiceDTO extends CreateInvoiceDTO
         $this->setTaxableSupplyAt($entity->getTaxableSupplyAt());
         $this->setPaymentMethod($entity->getPaymentMethod());
         $this->setCurrency($entity->getCurrency());
+        $this->setInvoiceNumber($entity->getInvoiceNumber());
 
         foreach ($entity->getItems() as $item) {
             $dto = new UpdateInvoiceItemDTO();
