@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block pageTitle %}{{ 'View model ID: ' ~ model.id ~ '(' ~  model.name ~ ' ' ~ model.surname ~ ' - CIN: ' ~ model.cinNumber ~')' }}{% endblock %}
 {% block body %}
     <div class="container">
-        <h1>View model ID: {{ model.id }} </h1>
 
         <div>
             <div class="row">

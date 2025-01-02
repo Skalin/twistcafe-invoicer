@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block pageTitle %}{{ 'Browse customers' }}{% endblock %}
 {% block body %}
     <div class="container">
-        <h1>{{ 'Browse customers' }}</h1>
 
         <div>
-            <h2 class="mt-5">{{ 'Customers' }}</h2>
 
             <a href="{{ path('customer_details_create') }}" class="btn btn-primary">Create new customer</a>
             <div class="row">
