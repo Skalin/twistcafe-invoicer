@@ -6,13 +6,16 @@ use App\Invoice\Entity\CustomerDetails;
 use App\Invoice\Enum\Currency;
 use App\Invoice\Enum\PaymentMethod;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotEqualTo;
 use Symfony\Component\Validator\Constraints\Type;
 
 class CreateInvoiceDTO
 {
     #[NotBlank]
+    #[NotEqualTo(propertyPath: 'customer', message: 'Supplier and customer cannot be the same')]
     private CustomerDetails $supplier;
 
+    #[NotEqualTo(propertyPath: 'supplier', message: 'Supplier and customer cannot be the same')]
     #[NotBlank]
     private CustomerDetails $customer;
 
