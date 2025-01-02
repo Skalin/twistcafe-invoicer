@@ -13,6 +13,7 @@ services:
       - php
 
   php:
+    container_name: twistcafe_php
     build:
       context: .
       dockerfile: docker/php/Dockerfile
