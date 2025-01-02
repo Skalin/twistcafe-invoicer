@@ -10,7 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/invoice', name: 'invoice_index', methods: ['GET'])]
+#[Route('/invoice',
+    name: 'invoice_index',
+    methods: ['GET']
+)]
 class ListController extends AbstractController
 {
     public function __construct(private readonly QueryManager $query)

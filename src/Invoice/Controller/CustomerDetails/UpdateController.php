@@ -11,7 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/customer-details/{customerDetails}/update', name: 'customer_details_update', requirements: ['customerDetails' => '\d+'], methods: ['GET', 'POST'])]
+#[Route('/customer-details/{customerDetails}/update',
+    name: 'customer_details_update',
+    requirements: ['customerDetails' => '\d+'],
+    methods: [
+        'GET',
+        'POST'
+    ],
+    priority: 1
+)]
 class UpdateController extends AbstractController
 {
     public function __construct(private readonly EntityManager $manager)

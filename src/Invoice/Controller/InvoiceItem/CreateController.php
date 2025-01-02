@@ -11,10 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/invoice/{invoice}/invoice-item/create', name: 'invoice_item_create', requirements: ['invoice' => '\d+'], methods: [
-    'GET',
-    'POST'
-])]
+#[Route('/invoice/{invoice}/invoice-item/create',
+    name: 'invoice_item_create',
+    requirements: ['invoice' => '\d+'],
+    methods: [
+        'GET',
+        'POST'
+    ]
+)]
 class CreateController extends AbstractController
 {
     public function __construct(private readonly EntityManager $manager)

@@ -7,7 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/customer-details/{customerDetails}/view', name: 'customer_details_view', requirements: ['customerDetails' => '\d+'], methods: ['GET'])]
+#[Route('/customer-details/{customerDetails}/view',
+    name: 'customer_details_view',
+    requirements: ['customerDetails' => '\d+'],
+    methods: ['GET'],
+    priority: 1
+)]
 class ViewController extends AbstractController
 {
     public function __construct()

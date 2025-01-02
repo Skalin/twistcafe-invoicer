@@ -10,10 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/customer-details/create', name: 'customer_details_create', methods: [
-    'GET',
-    'POST'
-])]
+#[Route('/customer-details/create',
+    name: 'customer_details_create',
+    methods: [
+        'GET',
+        'POST'
+    ]
+)]
 class CreateController extends AbstractController
 {
     public function __construct(private readonly EntityManager $manager)

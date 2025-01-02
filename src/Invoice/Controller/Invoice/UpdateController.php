@@ -11,7 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/invoice/{invoice}/update', name: 'invoice_update', requirements: ['invoice' => '\d+'], methods: ['GET', 'POST'])]
+#[Route('/invoice/{invoice}/update',
+    name: 'invoice_update',
+    requirements: ['invoice' => '\d+'],
+    methods: [
+        'GET',
+        'POST'
+    ]
+)]
 class UpdateController extends AbstractController
 {
     public function __construct(private readonly EntityManager $manager)
